@@ -1,0 +1,43 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-use-before-define": 0,
+        "@typescript-eslint/ban-ts-comment": "warn"
+      },
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.eslint.json"
+      }
+    },
+    {
+      "files": ["**/*.test.[tj]s"],
+      "env": {
+        "jest": true
+      },
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended", "prettier"]
+    },
+    {
+      "files": ["**/*.bench.js"],
+      "globals": {
+        "describe": true,
+        "suite": true,
+        "bench": true,
+        "test": true,
+        "it": true,
+        "rep": true
+      },
+      "extends": ["eslint:recommended", "prettier"]
+    }
+  ]
+}
